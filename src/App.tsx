@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   getLanguageCode,
   getSupportedLanguages,
@@ -11,60 +11,51 @@ import ThemePicker from './theme-picker/theme-picker';
 
 import './App.css';
 
-interface IState {
-  languageCode: string;
-  languages: {[key: string]: string};
-}
+type StrToStrType = {[key: string]: string};
+const initialLanguages: StrToStrType = {};
 
-//TODO: Change this to a function-based component!
-class App extends Component<{}, IState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {languageCode: '', languages: {}};
-  }
+export default (): JSX.Element => {
+  const [languageCode, setLanguageCode] = useState('');
 
-  async componentDidMount(): Promise<void> {
-    const languageCode = getLanguageCode();
-    const languages = await getSupportedLanguages();
-    this.setState({languageCode, languages});
-  }
+  const [languages, setLanguages] = useState(initialLanguages);
 
-  changeLanguage = async (
+  useEffect(() => {
+    setLanguageCode(getLanguageCode());
+    getSupportedLanguages().then(
+      // @ts-ignore
+      (langs: string[]): void => setLanguages(langs)
+    );
+  });
+
+  const changeLanguage = async (
     event: React.SyntheticEvent<{value: string}>
   ): Promise<void> => {
     const languageCode = event.currentTarget.value;
+    console.log('App.tsx changeLanguage: languageCode =', languageCode);
     await setLanguage(languageCode);
-    this.setState({languageCode});
+    console.log('App.tsx changeLanguage: changed');
+    setLanguageCode(languageCode);
   };
 
-  //render(): JSX.Element {
-  render(): JSX.Element {
-    const {languageCode, languages} = this.state;
-    const languageNames = Object.keys(languages);
+  const languageNames = Object.keys(languages);
 
-    return <div>test</div>;
-    /*
-    return (
-      <div className="App">
-        <div>
-          <label>Language:</label>
-          <select onChange={this.changeLanguage} value={languageCode}>
-            {languageNames.map(
-              (name: string): any => (
-                <option key={name} value={languages[name]}>
-                  {name}
-                </option>
-              )
-            )}
-          </select>
-        </div>
-        <ThemePicker />
-        <Percent count={2} total={7} />
-        <Percent count={5} total={7} />
+  return (
+    <div className="App">
+      <div>
+        <label>Language:</label>
+        <select onChange={changeLanguage} value={languageCode}>
+          {languageNames.map(
+            (name: string): any => (
+              <option key={name} value={languages[name]}>
+                {name}
+              </option>
+            )
+          )}
+        </select>
       </div>
-    );
-    */
-  }
-}
-
-export default App;
+      <ThemePicker />
+      <Percent count={2} total={7} />
+      <Percent count={5} total={7} />
+    </div>
+  );
+};

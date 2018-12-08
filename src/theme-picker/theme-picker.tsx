@@ -5,7 +5,6 @@ import './theme-picker.scss';
 
 export default (): JSX.Element => {
   const [theme, setTheme] = useState('Foo');
-  console.log('theme =', theme);
   const handleChange = useCallback(e => setTheme(e.target.value), []);
 
   return (
