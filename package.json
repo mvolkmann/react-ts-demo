@@ -15,9 +15,20 @@
   },
   "scripts": {
     "build": "react-scripts build",
+    "cover": "open coverage/lcov-report/index.html",
+    "cypress-open": "cypress open",
+    "cypress-run": "cypress run --browser chrome",
+    "format": "prettier --write 'src/**/*.{js,scss}'",
     "gentran": "generate-translations",
+    "lint": "tslint",
+    "prepush": "npm run verify",
     "start": "react-scripts start",
-    "test": "react-scripts test"
+    "storybook-open": "open http://localhost:9001",
+    "storybook-run": "start-storybook -c .storybook -p 9001 -s ./public",
+    "storybook": "npm-run-all storybook-open storybook-run",
+    "test-no-watch": "cross-env CI=true react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom",
+    "verify": "npm-run-all format lint test-no-watch"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,6 +40,8 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "node-sass": "^4.10.0"
+    "node-sass": "^4.10.0",
+    "prettier": "^1.15.3",
+    "tslint": "^5.11.0"
   }
 }

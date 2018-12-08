@@ -18,6 +18,7 @@ interface IState {
   languages: {[key: string]: string};
 }
 
+//TODO: Change this to a function-based component!
 class App extends Component<IProps, IState> {
   constructor(props: any) {
     super(props);
