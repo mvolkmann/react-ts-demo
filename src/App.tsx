@@ -37,10 +37,13 @@ class App extends Component<{}, IState> {
     this.setState({languageCode});
   };
 
-  render() {
+  //render(): JSX.Element {
+  render(): JSX.Element {
     const {languageCode, languages} = this.state;
     const languageNames = Object.keys(languages);
 
+    return <div>test</div>;
+    /*
     return (
       <div className="App">
         <div>
@@ -60,6 +63,7 @@ class App extends Component<{}, IState> {
         <Percent count={5} total={7} />
       </div>
     );
+    */
   }
 }
 

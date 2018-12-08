@@ -2,7 +2,12 @@
   "name": "react-ts-demo",
   "description": "demonstrates using React with TypeScript, hooks, and more",
   "version": "0.1.0",
-  "private": false,
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
   "scripts": {
     "build": "react-scripts build",
     "cover": "open coverage/lcov-report/index.html",
@@ -20,9 +25,6 @@
     "test": "react-scripts test --env=jsdom",
     "verify": "npm-run-all format lint test-no-watch"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "dependencies": {
     "@types/jest": "23.3.10",
     "@types/node": "10.12.12",
@@ -34,12 +36,6 @@
     "typescript": "3.2.2",
     "web-translate": "^0.6.0"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "devDependencies": {
     "node-sass": "^4.10.0",
     "prettier": "^1.15.3",
