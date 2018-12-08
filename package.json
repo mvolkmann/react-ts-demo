@@ -1,18 +1,8 @@
 {
-  "name": "mc-demo",
+  "name": "react-ts-demo",
+  "description": "demonstrates using React with TypeScript, hooks, and more",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@types/jest": "23.3.10",
-    "@types/node": "10.12.12",
-    "@types/react": "16.7.13",
-    "@types/react-dom": "16.0.11",
-    "react": "16.7.0-alpha.0",
-    "react-dom": "16.7.0-alpha.0",
-    "react-scripts": "2.1.1",
-    "typescript": "3.2.2",
-    "web-translate": "^0.6.0"
-  },
+  "private": false,
   "scripts": {
     "build": "react-scripts build",
     "cover": "open coverage/lcov-report/index.html",
@@ -20,7 +10,7 @@
     "cypress-run": "cypress run --browser chrome",
     "format": "prettier --write 'src/**/*.{js,scss}'",
     "gentran": "generate-translations",
-    "lint": "tslint",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "prepush": "npm run verify",
     "start": "react-scripts start",
     "storybook-open": "open http://localhost:9001",
@@ -32,6 +22,17 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "dependencies": {
+    "@types/jest": "23.3.10",
+    "@types/node": "10.12.12",
+    "@types/react": "16.7.13",
+    "@types/react-dom": "16.0.11",
+    "react": "16.7.0-alpha.0",
+    "react-dom": "16.7.0-alpha.0",
+    "react-scripts": "2.1.1",
+    "typescript": "3.2.2",
+    "web-translate": "^0.6.0"
   },
   "browserslist": [
     ">0.2%",
