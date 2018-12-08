@@ -10,16 +10,14 @@ import Percent from './percent/percent';
 import ThemePicker from './theme-picker/theme-picker';
 
 import './App.css';
-import {loadavg} from 'os';
 
-interface IProps {}
 interface IState {
   languageCode: string;
   languages: {[key: string]: string};
 }
 
 //TODO: Change this to a function-based component!
-class App extends Component<IProps, IState> {
+class App extends Component<{}, IState> {
   constructor(props: any) {
     super(props);
     this.state = {languageCode: '', languages: {}};
