@@ -25,16 +25,14 @@ export default (): JSX.Element => {
       // @ts-ignore
       (langs: string[]): void => setLanguages(langs)
     );
-  });
+  }, []);
 
   const changeLanguage = async (
     event: React.SyntheticEvent<{value: string}>
   ): Promise<void> => {
-    const languageCode = event.currentTarget.value;
-    console.log('App.tsx changeLanguage: languageCode =', languageCode);
-    await setLanguage(languageCode);
-    console.log('App.tsx changeLanguage: changed');
-    setLanguageCode(languageCode);
+    const {value} = event.currentTarget;
+    await setLanguage(value);
+    setLanguageCode(value);
   };
 
   const languageNames = Object.keys(languages);
